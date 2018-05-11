@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layouts/main" >
+<head>
+    <title>User's Property</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <h2>User Lists</h2>
+
+    <table>
+        <tr>
+            <th>Location</th>
+            <th>Price</th>
+            <th>View</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="property : ${properties}">
+            <td th:text="*{property.title}">Title Sample</td>
+            <td th:text="*{property.price}">Price Sample</td>
+            <td><a th:href="@{'/user/property/view/' + ${property.id}}">View</a></td>
+            <td><a th:href="@{'/user/property/update/' + ${property.id}}">Update</a></td>
+            <td><a th:href="@{'/user/property/delete/' + ${property.id}}">Delete</a></td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

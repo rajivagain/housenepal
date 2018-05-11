@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layouts/main" >
+<head>
+    <title>House Nepal - Home Page</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwdx3x4fQbgoFK1uQ1tM2HAcIhTjv3V_c&callback=initMap">
+    </script>
+
+    <script th:src="@{/core/map.js}"></script>
+    <script th:src="@{/core/uploadImage.js}"></script>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <h2>Add Property</h2>
+
+    <form action="#" th:action="@{/user/property/add}" th:object="${property}" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Title" th:field = "*{title}" />
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" rows="5" id="description" placeholder="Description" th:field = "*{description}" />
+        </div>
+
+        <div class="form-group">
+            <label for="propertyAids">Property Aids</label>
+            <select class="form-control" id="propertyAids" th:field="*{propertyAids}">
+                <option value="2 Months">2 Months</option>
+                <option value="2 Week">2 Week</option>
+                <option value="1 Month">1 Month</option>
+                <option value="3 Months">3 Months</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" placeholder="Price" th:field = "*{price}" />
+        </div>
+        <div class="form-group">
+            <label>Price Negotiable</label><br />
+            <label class="radio-inline"><input type="radio" name="optradio" value="Yes" th:field="*{negotiable}">Yes</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="Fixed Price" th:field="*{negotiable}">Fixed Price</label>
+        </div>
+        <div class="form-group">
+            <label for="propertyType">Property Type</label>
+            <select class="form-control" id="propertyType" th:field="*{type}">
+                <option value="Flat">Flat</option>
+                <option value="Room">Room</option>
+                <option value="House">House</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="roomSize">Room Size</label>
+            <select class="form-control" id="roomSize" th:field="*{roomSize}">
+                <option value="Medium">Medium</option>
+                <option value="Small">Small</option>
+                <option value="Spacious">Spacious</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="floorNumber">Floor Number</label>
+            <select class="form-control" id="floorNumber" th:field="*{floorNumber}">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="roomNumber">Number of Rooms</label>
+            <select class="form-control" id="roomNumber" th:field="*{numberOfRooms}">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Bathroom</label><br />
+            <label class="radio-inline"><input type="radio" name="optradio" value="Attached" th:field="*{bathroom}">Attached</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="Non attacheds" th:field="*{bathroom}">Non attached </label>
+        </div>
+        <div class="form-group">
+            <label>Kitchen</label><br />
+            <label class="radio-inline"><input type="radio" name="optradio" value="Yes" th:field="*{kitchen}">Yes</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="No" th:field="*{kitchen}">No</label>
+        </div>
+        <div class="form-group">
+            <label>Water Supply</label><br />
+            <label class="radio-inline"><input type="radio" name="optradio" value="Yes" th:field="*{waterSupply}">Yes</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="No" th:field="*{waterSupply}">No</label>
+        </div>
+        <div class="form-group">
+            <label>Features</label><br />
+            <label class="checkbox-inline"><input type="checkbox" value="Parking Space" th:field="*{featured}">Parking Space</label>
+            <label class="checkbox-inline"><input type="checkbox" value="Internet Facility" th:field="*{featured}">Internet Facility</label>
+            <label class="checkbox-inline"><input type="checkbox" value="TV Cable" th:field="*{featured}">TV Cable</label>
+            <label class="checkbox-inline"><input type="checkbox" value="Pets Allowed" th:field="*{featured}">Pets Allowed</label>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Select files</strong><br /><span><small>Add files to the upload queue and click the start button.</small></span> </div>
+                <div class="panel-body drag_view_thumbs">
+                    <ul class="drag_images" id="insert_image">
+                    </ul>
+                </div>
+            <div class="panel-footer">
+                <input type="file" id="upload" name="upload" onchange="onFileSelected(event)" height="200px" multiple/>
+                <button class="btn btn-default" onclick="document.getElementById('upload').click();return false" id="add_button"><span class="fa fa fa-plus-circle"> Add Images </span></button>
+            </div>
+        </div>
+        <div id="map"></div>
+        <div class="form-group">
+            <input type="hidden" id="lat" class="form-control" th:field="*{latitude}" />
+            <input type="hidden" id="lng" class="form-control" th:field="*{longitude}" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" onclick="submit_click()">Submit</button>
+    </form>
+</div>
+</body>
+</html>
