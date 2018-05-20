@@ -64,7 +64,6 @@ public class UserController {
                 fieldErrors) {
             if (!fieldError.getField().equals("email") && !fieldError.getField().equals("password")) {
                 model.addAttribute(user);
-                System.out.println(bindingResult.getAllErrors());
                 return "/user/update";
             }
         }

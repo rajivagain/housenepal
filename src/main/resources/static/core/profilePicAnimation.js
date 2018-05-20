@@ -1,3 +1,4 @@
+console.log("JS LOADED");
 $(function () {
     var profileImage = $("#profileImage");
     var profileImageText = $("#profileImageText");
