@@ -5,29 +5,31 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    private String role;
+    private Long role_id;
+    private String role_name;
 
     public Role() {
     }
 
-    public Long getId() {
-        return id;
+
+    public Long getRole_id() {
+        return role_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRole_id(Long role_id) {
+        this.role_id = role_id;
     }
 
-    public String getRole() {
-        return role;
+    public String getRole_name() {
+        return role_name;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRole_name(String role_name) {
+        this.role_name = role_name;
     }
+
 }
