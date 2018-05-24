@@ -4,13 +4,14 @@ function onFileSelected(event) {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "/register",
+        url: "/user/profileImageUpload",
         data: fd,
-        processData: false, //prevent jQuery from automatically transforming the data into a query string
+        processData: false,
         contentType: false,
         cache: false,
         success: function (data) {
             console.log("Success");
+            location.reload();
         },
         error: function (e) {
             console.log(e);

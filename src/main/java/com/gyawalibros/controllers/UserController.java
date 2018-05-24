@@ -75,4 +75,20 @@ public class UserController {
         userService.updateUser(user);
         return "redirect:/user";
     }
+
+    @PostMapping("/user/profileImageUpload")
+    public String profileImageUpload(Model model, @RequestParam("image") MultipartFile images) throws IOException {
+        UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDetails.getUser();
+
+        String fileURL = cloudinaryService.upload(images);
+        userService.updateProfilePic(userDetails, fileURL);
+
+        User matchedUser = userService.getUserByEmail(user.getEmail());
+        String uploadMessage = "Uploaded Sucessfully!";
+        model.addAttribute("uploadMessage", uploadMessage);
+        model.addAttribute("user", matchedUser);
+        System.out.println("UPLOADED");
+        return "/user/profile";
+    }
 }
