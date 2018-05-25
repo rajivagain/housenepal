@@ -14,7 +14,7 @@ body{
 }
 
 .navbar-brand{
-    padding: 0px 15px !important;
+    padding: 0 15px !important;
 }
 
 .navbar-nav {
@@ -88,7 +88,7 @@ address {
     font-size: 28px;
     vertical-align: middle;
     border-right: 3px solid #FFC107;
-    padding: 0.4em .4em 0.4em 0em;
+    padding: 0.4em .4em 0.4em 0;
 
     float: left;
     margin-top: 5px;
@@ -305,7 +305,7 @@ hr {
 }
 
 .alert-danger{
-    margin-bottom: 0px !important;
+    margin-bottom: 0 !important;
     margin-top: 5px;
     padding-top: 10px !important;
     padding-bottom: 10px !important;
@@ -313,4 +313,10 @@ hr {
 
 .optional-text{
     font-weight: 100;
+}
+
+.spinner-location {
+    position: absolute;
+    margin-top: -50%;
+    margin-left: 29%;
 }

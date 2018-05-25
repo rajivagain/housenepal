@@ -1,6 +1,7 @@
 function onFileSelected(event) {
     var fd = new FormData();
     fd.append("image", event.target.files[0]);
+    $("#spinner-location").show();
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
@@ -9,7 +10,7 @@ function onFileSelected(event) {
         processData: false,
         contentType: false,
         cache: false,
-        success: function (data) {
+        success: function () {
             console.log("Success");
             location.reload();
         },
@@ -18,3 +19,7 @@ function onFileSelected(event) {
         }
     });
 }
+
+$(function () {
+    $("#spinner-location").hide();
+});

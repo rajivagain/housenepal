@@ -18,6 +18,7 @@
         <!--<form action="#" th:action="@{/user}" method="post" enctype="multipart/form-data" id="uploadForm">-->
             <div class="col-md-3">
                 <img id="profileImage" th:src="${user.photoUrl}" alt="" style="width: 100%; border-radius: 60px;" />
+                <button class="btn btn-sm btn-warning spinner-location" id="spinner-location"><span class="fa fa-refresh fa-spin"></span> Loading...</button>
                 <!--<div id="profileImageText" class="centered">Update Image</div>-->
                 <button class="btn btn-default profile-image-button" onclick="document.getElementById('upload').click();return false" id="add_button"><span class="fa fa fa-plus-circle"> Change Image </span></button>
             </div>
