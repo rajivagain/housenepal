@@ -19,6 +19,7 @@ body{
 
 .navbar-nav {
     margin-left: 50px !important;
+    margin-bottom: 0 !important;
 }
 
 .active > a {
@@ -42,6 +43,10 @@ body{
 .search-area{
     margin-bottom: 40px;
     margin-top: 15px;
+
+    height: 528px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 10%) 0% 0% / cover, url(https://static.trulia-cdn.com/images/homepage/header_background_v3_hd.jpg) center center no-repeat;
+    padding: 118px 0px 0px;
 }
 
 .property-tabs{
