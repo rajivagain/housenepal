@@ -8,72 +8,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>House Nepal</title>
 
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
 
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
 
+    <script th:src="@{/core/map.js}"></script>
+    <script th:src="@{/core/uploadImage.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
     <![endif]-->
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/"><img class="logo" src="images/logo.png" alt="logo"></a>
-
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posts <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/posts/list">List</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/authors/list">List</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div sec:authorize="isAuthenticated()">
-                <p class="navbar-text navbar-right">
-                    <span th:text ="${#authentication.getPrincipal().getUser().getFullName()}"></span>
-                    <a th:href="@{/logout}"><button class="btn btn-danger" type="submit" th:value="Logout">Logout</button></a>
-                </p>
-            </div>
-        </div>
-    </div>
-</nav>
-
 <div class="container">
 
-
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">House Nepal</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posts <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/posts/list">List</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/authors/list">List</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Guest User</a></p>
+            </div>
+        </div>
+    </nav>
 
     <div layout:fragment="content">
     </div>
 
-</div>
-<footer id="myFooter">
+    <footer>
+        <p>Copyright House Nepal 2017</p>
+    </footer>
 
-    <div class="social-networks">
-        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-        <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
-        <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-    </div>
-    <div class="footer-copyright">
-        <p>© 2018 HOUSE NEPAL. ALL RIGHTS RESERVED</p>
-    </div>
-</footer>
+</div>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
 </body>
 </html>

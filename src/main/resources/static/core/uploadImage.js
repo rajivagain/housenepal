@@ -53,8 +53,17 @@ function addthumbnail(j) {
     }
 }
 
+$(document).ready(function () {
 
-function submit_click() {
+    $("#btnSubmit").click(function (event) {
+        fire_ajax_submit();
+
+    });
+
+});
+
+
+function fire_ajax_submit() {
     alert(img_arr.length);
     var xhr = new XMLHttpRequest();
     var fd = new FormData();
@@ -63,7 +72,7 @@ function submit_click() {
         $.ajax({
             type: "POST",
             enctype: 'multipart/form-data',
-            url: "/user/property/add",
+            url: "/user/property/upload",
             data: fd,
             processData: false, //prevent jQuery from automatically transforming the data into a query string
             contentType: false,
@@ -72,7 +81,7 @@ function submit_click() {
                 console.log("Success");
             },
             error: function (e) {
-                console.log(e);
+                console.log("Error");
             }
         });
     }

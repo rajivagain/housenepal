@@ -1,6 +1,7 @@
 package com.gyawalibros.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -9,8 +10,6 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private String title;
 
     private String description;
 
@@ -40,19 +39,23 @@ public class Property {
 
     private String waterSupply;
 
-    private String features;
+    private Date createdDate;
 
-    private String createdDate;
-
-    private String modifiedDate;
+    private Date modifiedDate;
 
     private String views;
 
-    private String sold;
+    private boolean sold;
 
     private boolean active;
 
-    private String featured;
+    private boolean parkingSpace;
+
+    private boolean internetFacility;
+
+    private boolean TvCable;
+
+    private boolean petsAllowed;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "photo_id")
@@ -72,14 +75,6 @@ public class Property {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getDescription() {
@@ -194,27 +189,51 @@ public class Property {
         this.waterSupply = waterSupply;
     }
 
-    public String getFeatures() {
-        return features;
+    public boolean isParkingSpace() {
+        return parkingSpace;
     }
 
-    public void setFeatures(String features) {
-        this.features = features;
+    public void setParkingSpace(boolean parkingSpace) {
+        this.parkingSpace = parkingSpace;
     }
 
-    public String getCreatedDate() {
+    public boolean isInternetFacility() {
+        return internetFacility;
+    }
+
+    public void setInternetFacility(boolean internetFacility) {
+        this.internetFacility = internetFacility;
+    }
+
+    public boolean isTvCable() {
+        return TvCable;
+    }
+
+    public void setTvCable(boolean tvCable) {
+        TvCable = tvCable;
+    }
+
+    public boolean isPetsAllowed() {
+        return petsAllowed;
+    }
+
+    public void setPetsAllowed(boolean petsAllowed) {
+        this.petsAllowed = petsAllowed;
+    }
+
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
-    public String getModifiedDate() {
+    public Date getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(String modifiedDate) {
+    public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 
@@ -226,11 +245,11 @@ public class Property {
         this.views = views;
     }
 
-    public String getSold() {
+    public boolean isSold() {
         return sold;
     }
 
-    public void setSold(String sold) {
+    public void setSold(boolean sold) {
         this.sold = sold;
     }
 
@@ -240,14 +259,6 @@ public class Property {
 
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public String getFeatured() {
-        return featured;
-    }
-
-    public void setFeatured(String featured) {
-        this.featured = featured;
     }
 
     public int getPrice() {
