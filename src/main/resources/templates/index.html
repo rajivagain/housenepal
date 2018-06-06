@@ -5,35 +5,38 @@
     <title>House Nepal - Home Page</title>
 </head>
 <body>
+<div layout:fragment="top-search-area">
+    <div class="row search-area">
+        <div class="container">
+            <form action="#" method="post">
+                <div class="col-md-4">
+                    <label><i class="fa fa-map-marker" aria-hidden="true"></i> Location</label>
+                    <select class="form-control">
+                        <option>Baneswor</option>
+                        <option>Kapan</option>
+                        <option>Thamel</option>
+                        <option>New Road</option>
+                        <option>Kalanki</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label><i class="fa fa-home" aria-hidden="true"></i> Category</label>
+                    <select class="form-control">
+                        <option>All</option>
+                        <option>Single Room</option>
+                        <option>Flat</option>
+                        <option>Whole House</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <input class="col-md-3 btn btn-lg btn-primary btn-block property-search" type="submit" value="Property Search">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div layout:fragment="content">
-    <div class="row search-area">
-        <form action="#" method="post">
-            <div class="col-md-4">
-                <label><i class="fa fa-map-marker" aria-hidden="true"></i> Location</label>
-                <select class="form-control">
-                    <option>Baneswor</option>
-                    <option>Kapan</option>
-                    <option>Thamel</option>
-                    <option>New Road</option>
-                    <option>Kalanki</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <label><i class="fa fa-home" aria-hidden="true"></i> Category</label>
-                <select class="form-control">
-                    <option>All</option>
-                    <option>Single Room</option>
-                    <option>Flat</option>
-                    <option>Whole House</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <input class="col-md-3 btn btn-lg btn-primary btn-block property-search" type="submit" value="Property Search">
-            </div>
-        </form>
-    </div>
-
     <ul class="nav nav-tabs property-tabs">
         <li class="active"><a href="#">All</a></li>
         <li><a href="#">Single-Room</a></li>

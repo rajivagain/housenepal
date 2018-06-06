@@ -6,6 +6,7 @@ body{
     /*margin-top:20px;*/
     border-radius: 0 !important;
     min-height: 70px !important;
+    margin-bottom: -15px !important;
 }
 
 .navbar > .container-fluid {
