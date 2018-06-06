@@ -27,9 +27,9 @@ public class UserPropertyController {
     @Autowired
     PropertyService propertyService;
 
-    private String UPLOADED_FOLDER = "G://temp//";
+    private String UPLOADED_FOLDER = "D://temp//";
 
-    @RequestMapping("/property/list")
+    @GetMapping("/property/list")
     public String listUserProperties(Model model){
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Property> properties = propertyService.findUserProperties(userDetails);
@@ -58,7 +58,15 @@ public class UserPropertyController {
         return "redirect:/user/property/list";
     }
 
-
+    @PostMapping("/property/upload")
+    public String uploadImage(@RequestParam("image[]") MultipartFile[] image) throws IOException {
+        for(MultipartFile multipartFile: image) {
+            System.out.println(multipartFile.getOriginalFilename());
+            File file = new File(UPLOADED_FOLDER + multipartFile.getOriginalFilename());
+            multipartFile.transferTo(file);
+        }
+        return "/user/property/list";
+    }
 
     @RequestMapping("/property/view/{propertyId}")
     public String viewUserProperty(@PathVariable String propertyId, Model model){
@@ -93,6 +101,15 @@ public class UserPropertyController {
         Long propertyIdLong = Long.valueOf(propertyId);
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         propertyService.removeUserProperty(propertyIdLong, userDetails);
+        return "redirect:/user/property/list";
+    }
+
+    @GetMapping("/property/sold/{id}")
+    public String sold(@PathVariable Long id){
+        Long propertyIdLong = Long.valueOf(id);
+        UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Property property = propertyService.getUserProperty(propertyIdLong, userDetails);
+        propertyService.sold(property);
         return "redirect:/user/property/list";
     }
 }

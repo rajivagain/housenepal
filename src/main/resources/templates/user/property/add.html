@@ -20,24 +20,6 @@
 
     <form action="#" th:object="${property}" method="post" enctype="multipart/form-data" id="uploadForm">
         <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" placeholder="Title" th:field = "*{title}" />
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea class="form-control" rows="5" id="description" placeholder="Description" th:field = "*{description}" />
-        </div>
-
-        <div class="form-group">
-            <label for="propertyAids">Property Aids</label>
-            <select class="form-control" id="propertyAids" th:field="*{propertyAids}">
-                <option value="2 Months">2 Months</option>
-                <option value="2 Week">2 Week</option>
-                <option value="1 Month">1 Month</option>
-                <option value="3 Months">3 Months</option>
-            </select>
-        </div>
-        <div class="form-group">
             <label for="price">Price</label>
             <input type="text" class="form-control" id="price" placeholder="Price" th:field = "*{price}" />
         </div>
@@ -45,6 +27,10 @@
             <label>Price Negotiable</label><br />
             <label class="radio-inline"><input type="radio" name="optradio" value="Yes" th:field="*{negotiable}">Yes</label>
             <label class="radio-inline"><input type="radio" name="optradio" value="Fixed Price" th:field="*{negotiable}">Fixed Price</label>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" rows="5" id="description" placeholder="Description" th:field = "*{description}" />
         </div>
         <div class="form-group">
             <label for="propertyType">Property Type</label>
@@ -100,10 +86,10 @@
         </div>
         <div class="form-group">
             <label>Features</label><br />
-            <label class="checkbox-inline"><input type="checkbox" value="Parking Space" th:field="*{featured}">Parking Space</label>
-            <label class="checkbox-inline"><input type="checkbox" value="Internet Facility" th:field="*{featured}">Internet Facility</label>
-            <label class="checkbox-inline"><input type="checkbox" value="TV Cable" th:field="*{featured}">TV Cable</label>
-            <label class="checkbox-inline"><input type="checkbox" value="Pets Allowed" th:field="*{featured}">Pets Allowed</label>
+            <label class="checkbox-inline"><input type="checkbox" value="Parking Space" th:field="*{parkingSpace}">Parking Space</label>
+            <label class="checkbox-inline"><input type="checkbox" value="Internet Facility" th:field="*{internetFacility}">Internet Facility</label>
+            <label class="checkbox-inline"><input type="checkbox" value="TV Cable" th:field="*{tvCable}">TV Cable</label>
+            <label class="checkbox-inline"><input type="checkbox" value="Pets Allowed" th:field="*{petsAllowed}">Pets Allowed</label>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading"><strong>Select files</strong><br /><span><small>Add files to the upload queue and click the start button.</small></span> </div>
@@ -121,7 +107,7 @@
             <input type="hidden" id="lat" class="form-control" th:field="*{latitude}" />
             <input type="hidden" id="lng" class="form-control" th:field="*{longitude}" />
         </div>
-        <button type="submit" class="btn btn-primary btn-block" onclick="submit_click()">Submit</button>
+        <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">Submit</button>
     </form>
 </div>
 </body>

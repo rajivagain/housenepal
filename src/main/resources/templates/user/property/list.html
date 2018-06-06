@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      layout:decorator="layouts/main" >
+      layout:decorator="layouts/main" xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
     <title>User's Property</title>
 </head>
@@ -11,21 +11,35 @@
 
     <h2>User Lists</h2>
 
-    <table>
-        <tr>
-            <th>Location</th>
-            <th>Price</th>
-            <th>View</th>
-            <th>Update</th>
-            <th>Delete</th>
+    <table class="table table-striped">
+        <thead>
+        <tr class="bg-success">
+            <th scope="col" style="width: 5%">S.N</th>
+            <th scope="col" style="width: 30%">Property Location</th>
+            <th scope="col" style="width: 10%">Price</th>
+            <th scope="col" style="width: 25%">Ad Creation Date</th>
+            <th scope="col" style="width: 10%"></th>
+            <th scope="col" style="width: 10%"></th>
+            <th scope="col" style="width: 10%"></th>
+            <th scope="col" style="width: 10%"></th>
         </tr>
-        <tr th:each="property : ${properties}">
-            <td th:text="*{property.title}">Title Sample</td>
-            <td th:text="*{property.price}">Price Sample</td>
-            <td><a th:href="@{'/user/property/view/' + ${property.id}}">View</a></td>
-            <td><a th:href="@{'/user/property/update/' + ${property.id}}">Update</a></td>
-            <td><a th:href="@{'/user/property/delete/' + ${property.id}}">Delete</a></td>
+        <tr th:each="property :${properties}">
+            <td th:text="${property.id}"></td>
+            <td th:text="${property.area}"></td>
+            <td th:text="${property.price}"></td>
+            <td th:text="${property.createdDate}"></td>
+            <td>
+                <a th:href="@{'/user/property/sold/'+${property.id}}">Sold</a>
+            </td>
+            <td>
+                <a th:href="@{'/user/property/update/'+${property.id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            </td>
+            <td>
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </td>
+            <!-- <td><a th:href="@{'/user/property/update/'+${property.id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td> -->
         </tr>
+        </thead>
     </table>
 
 </div>

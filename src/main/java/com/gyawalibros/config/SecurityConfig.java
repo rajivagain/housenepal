@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //                    .failureForwardUrl("/failed")
                     .loginPage("/login")
                     .usernameParameter("email")
+                    .failureHandler(new CustomAuthenticationFailureHandler())
                     .permitAll()
                     .and()
                 .logout()

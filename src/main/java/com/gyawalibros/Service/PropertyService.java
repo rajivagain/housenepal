@@ -7,6 +7,8 @@ import com.gyawalibros.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,6 +27,10 @@ public class PropertyService {
 
     public void addProperty(Property property, UserDetailsImpl userDetail) {
         User user = userDetail.getUser();
+
+        Date currentDate = Calendar.getInstance().getTime();
+        property.setCreatedDate(currentDate);
+        property.setPropertyAids("3 Months");
         property.setUser(user);
         propertyRepository.save(property);
     }
@@ -61,5 +67,10 @@ public class PropertyService {
         if(property.getUser().getId() == user.getId()){
             propertyRepository.delete(propertyId);
         }
+    }
+
+    public void sold(Property property){
+        property.setSold(true);
+        propertyRepository.save(property);
     }
 }
